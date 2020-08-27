@@ -6,7 +6,8 @@ const int n_vitals = 3; //3 In this case.
 typedef struct Vitals{
 	string vitalName="";
 	float vitalValue;
-	float lower,upper;
+	float lower;
+	float upper;
 }vital;
 vital allVitals[n_vitals];
 

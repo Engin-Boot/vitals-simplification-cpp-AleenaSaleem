@@ -10,7 +10,7 @@ typedef struct Vitals{
 }vital;
 vital allVitals[n_vitals];
 
-void initializeVitalsInformation(string name, float lower float upper){
+void initializeVitalsInformation(string name, float lower, float upper){
 	int loopCounter=0;
 	//string name;
 	float lower, upper;
@@ -60,10 +60,10 @@ bool vitalsAreNormal(){
 	return status;
 }
 int main(){
-	initializeVitalsInformation(); // one time thing
+	//initializeVitalsInformation(); // one time thing
 	//Check if all vitals are in normal range
-	int loopCounter=0;     
-	getCurrentVitalValues(); //This needs to be called continuously
+	//int loopCounter=0;     
+	//getCurrentVitalValues(); //This needs to be called continuously
 	//bool status = vitalsAreNormal();
 	initializeVitalsInformation("bpm", 70, 150);
 	initializeVitalsInformation("SpO2" , 90, 100);

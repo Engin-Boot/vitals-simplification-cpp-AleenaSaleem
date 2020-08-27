@@ -44,5 +44,6 @@ int main(){
 		n_times_while_loop_runs--;
 		//cout<<endl<<status<<endl;
 	}
+	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
 	return 0;
 }

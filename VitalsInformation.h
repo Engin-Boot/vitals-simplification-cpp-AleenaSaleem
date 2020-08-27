@@ -28,6 +28,8 @@ Vital allVitals[n_vitals];
 
 Vital::Vital(){
 	this->vitalValue = 0;
+	this->lower = 0;
+	this->upper = 0;
 }
 Vital::Vital(string name, float lower, float upper){
 	this->vitalName = name;

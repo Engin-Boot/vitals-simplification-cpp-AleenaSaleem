@@ -6,7 +6,7 @@ const float bpmLimit[] = {70 , 150};
 const float spo2Bar = 90;
 const float respRateLimit[] = {30 , 95};
 
-bool checkBPM(float bpm){
+bool isBPMNormal(float bpm){
 	bool retval=true;
 	if(bpm < bpmLimit[0]) {
 	cout<<"BPM Very Low"<<endl;
@@ -20,7 +20,7 @@ bool checkBPM(float bpm){
   return retval;
 }
 
-bool checkspo2(float spo2){
+bool isspo2Normal(float spo2){
 	bool retval=true;
 	if(spo2 < spo2Bar) {
 	cout<<"Oxygen saturation low!"<<endl;
@@ -29,7 +29,7 @@ bool checkspo2(float spo2){
   return retval;
 }
 
-bool checkRespRate(float respRate){
+bool isRespRateNormal(float respRate){
 	bool retval = true;
 	if(respRate < respRateLimit[0]) {
 	cout<<"Respiration rate low"<<endl;

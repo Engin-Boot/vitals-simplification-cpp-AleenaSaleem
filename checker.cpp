@@ -5,13 +5,11 @@ using namespace std;
 const int n_vitals = 3; //3 In this case.
 typedef struct Vitals{
 	string vitalName="";
-	float vitalValue;
-	float lower;
-	float upper;
+	float vitalValue,lower,upper;
 }vital;
 vital allVitals[n_vitals];
 
-void initializeVitalsInformation(string name, float lower, float upper){
+void initializeVitalsInformation(string name, float lower_p, float upper_p){
 	int loopCounter=0;
 	//string name;
 	float lower, upper;
@@ -19,9 +17,8 @@ void initializeVitalsInformation(string name, float lower, float upper){
 		//cin>>name>>lower>>upper;
 		allVitals[loopCounter].vitalValue = 0; //initially - before any real input
 		allVitals[loopCounter].vitalName = name;
-		allVitals[loopCounter].lower = lower;
-		allVitals[loopCounter].upper = upper;
-		cout<<allVitals[loopCounter].vitalName<<endl;
+		allVitals[loopCounter].lower = lower_p;
+		allVitals[loopCounter].upper = upper_p;
 	}
 
 }

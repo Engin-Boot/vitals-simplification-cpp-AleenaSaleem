@@ -45,5 +45,6 @@ int main(){
 		//cout<<endl<<status<<endl;
 	}
 	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
+	//How to ? There is no console input. Need to hard code!
 	return 0;
 }

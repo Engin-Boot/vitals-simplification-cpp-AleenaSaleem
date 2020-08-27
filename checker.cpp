@@ -2,7 +2,7 @@
 #include<assert.h>
 using namespace std;
 
-const int n_vitals = 3; //3 In this case.
+const int n_vitals = 1; //3 In this case.
 typedef struct Vitals{
 	string vitalName="";
 	float vitalValue,lower,upper;
@@ -64,20 +64,15 @@ int main(){
 	//getCurrentVitalValues(); //This needs to be called continuously
 	//bool status = vitalsAreNormal();
 	initializeVitalsInformation("bpm", 70, 150);
-	initializeVitalsInformation("SpO2" , 90, 100);
-	initializeVitalsInformation("Resprate", 30, 70);
+	
 	//Hard coding initially
 	getCurrentVitalValues(72);
-	getCurrentVitalValues(95);
-	getCurrentVitalValues(65);
 	
 	assert(vitalsAreNormal() == true);
 	
 	//Hard coding initially
-	getCurrentVitalValues(75);
-	getCurrentVitalValues(98);
-	getCurrentVitalValues(75);
-	
+	getCurrentVitalValues(156);
+
 	assert(vitalsAreNormal() == false);
 
 	return 0;

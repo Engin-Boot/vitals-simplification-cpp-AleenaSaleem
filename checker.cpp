@@ -11,7 +11,7 @@ bool vitalIsNormal(float vitalValue , float lower, float upper){
 	bool retval=true;
 	if(vitalValue <= lower) {
 	cout<<"Very Low "<<vitalValue<<endl;
-    retval= false;
+    	retval= false;
   }
   else if(vitalValue >= upper){
   	cout<<"Very high "<<vitalValue<<endl;

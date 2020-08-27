@@ -10,12 +10,12 @@ typedef struct Vitals{
 }vital;
 vital allVitals[n_vitals];
 
-void initializeVitalsInformation(){
+void initializeVitalsInformation(string name, float lower float upper){
 	int loopCounter=0;
-	string name;
+	//string name;
 	float lower, upper;
 	for(loopCounter=0;loopCounter<n_vitals;loopCounter++){
-		cin>>name>>lower>>upper;
+		//cin>>name>>lower>>upper;
 		allVitals[loopCounter].vitalValue = 0; //initially - before any real input
 		allVitals[loopCounter].vitalName = name;
 		allVitals[loopCounter].lower = lower;
@@ -25,11 +25,10 @@ void initializeVitalsInformation(){
 
 }
 
-void getCurrentVitalValues(){
+void getCurrentVitalValues(float value){
 	int loopCounter=0;
-	float value;
 	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-		cin>>value;
+		//cin>>value;
 		allVitals[loopCounter].vitalValue = value;
 	}
 }
@@ -64,25 +63,23 @@ int main(){
 	initializeVitalsInformation(); // one time thing
 	//Check if all vitals are in normal range
 	int loopCounter=0;     
-	getCurrentVitalValues(); //This needs to be called continuously hard coding initially
+	getCurrentVitalValues(); //This needs to be called continuously
 	//bool status = vitalsAreNormal();
-		/*
-		allVitals[0].vitalValue = 72; 
-		allVitals[0].vitalName = "bpm";
-		allVitals[0].lower = 70;
-		allVitals[0].upper = 150;
-		
-		allVitals[1].vitalValue = 95; 
-		allVitals[1].vitalName = "SpO2";
-		allVitals[1].lower = 90;
-		allVitals[1].upper = 100;
-		
-		allVitals[2].vitalValue = 65; 
-		allVitals[2].vitalName = "RespRate";
-		allVitals[2].lower = 30;
-		allVitals[2].upper = 70;
-		*/
+	initializeVitalsInformation("bpm", 70, 150);
+	initializeVitalsInformation("SpO2" , 90, 100);
+	initializeVitalsInformation("Resprate", 30, 70);
+	//Hard coding initially
+	getCurrentVitalValues(72);
+	getCurrentVitalValues(95);
+	getCurrentVitalValues(65);
+	
 	assert(vitalsAreNormal() == true);
+	
+	//Hard coding initially
+	getCurrentVitalValues(75);
+	getCurrentVitalValues(98);
+	getCurrentVitalValues(75);
+	
 	assert(vitalsAreNormal() == false);
 
 	return 0;

@@ -41,6 +41,7 @@ int main(){
 			allVitals[loopCounter].setCurrentValue();
 		}
 		bool status = vitalsAreNormal();
+		n_times_while_loop_runs--;
 		//cout<<endl<<status<<endl;
 	}
 	return 0;

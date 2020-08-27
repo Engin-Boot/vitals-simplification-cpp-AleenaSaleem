@@ -35,8 +35,8 @@ bool vitalsAreNormal(){
 int main(){
 	int loopCounter = 0;
 	Initialize();
-	char c;
-	while((c=getchar())!='E'){ //lets say 'E' is some terminating condition indicating device has been shut down
+	int n_times_while_loop_runs = 5; // Don't know the terminating condition yet. While loop runs continuously until device shuts down.
+	while(n_times_while_loop_runs){ 
 		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
 			allVitals[loopCounter].setCurrentValue();
 		}

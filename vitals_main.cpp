@@ -35,28 +35,3 @@ int main(){
 
 	return 0;
 }
-
-int main(){
-	int loopCounter = 0;
-	Initialize();
-	float value;
-	//int n_times_while_loop_runs = 3;
-	// Don't know the terminating condition yet. While loop runs continuously until device shuts down.
-	/*while(n_times_while_loop_runs){ 
-		updateVitals();
-		cout<<vitalsAreNormal()<<endl;
-		
-		n_times_while_loop_runs--;
-		//cout<<endl<<status<<endl;
-	}*/
-	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
-	//How to ? There is no console input. Need to hard code!
-	updateVitalsvalues();
-	assert(vitalsAreNormal()==true);
-	updateVitalsvalues();
-	assert(vitalsAreNormal()==false);
-	updateVitalsvalues();
-	assert(vitalsAreNormal()==false);
-
-	return 0;
-}

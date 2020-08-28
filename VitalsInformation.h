@@ -108,7 +108,7 @@ class MonitorVitals{
 	public:
 		Alert* alertNow;
 		bool vitalsAreNormal(Alert*,string*, string*);
-		void alertRequired(Alert*,string*, string*);
+		void alertRequired(bool,Alert*,string*, string*);
 		void sendNow();
 		
 };
@@ -142,9 +142,11 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
   return retval;
 }
 
-void MonitorVitals::alertRequired(Alert* alertNow,string* name, string* message){	
-	this->alertNow = alertNow;
-	(this->alertNow)->sendAlert(name,message);
+void MonitorVitals::alertRequired(bool status,Alert* alertNow,string* name, string* message){	
+	if(!status){
+		this->alertNow = alertNow;
+		(this->alertNow)->sendAlert(name,message);
+	}
 }
 
 bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* message){
@@ -159,6 +161,6 @@ bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* mess
 		(*message)+="\n";
 		
 	}
-	alertRequired(alertNow,v_name,message);
+	alertRequired(status,alertNow,v_name,message);
 	return status;
 }

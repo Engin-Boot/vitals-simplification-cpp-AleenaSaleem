@@ -97,10 +97,12 @@ class AlertInIntercom: public Alert{
 };
 
 void AlertInSMS::sendAlert(const string* name, const string* message){
+	cout<<"Alert through SMS"<<endl;
 	cout<<*message<<endl;
 }
 
 void AlertInIntercom::sendAlert(const string* name, const string* message){
+	cout<<"Alert through intercom"<<endl;
 	cout<<*message<<endl;
 }
 //...................................................................................

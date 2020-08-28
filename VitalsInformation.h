@@ -155,7 +155,7 @@ bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* mess
 		*v_name = allVitals[loopCounter].getName();
 		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
 		status = status && new_status;
-		message+="\n";
+		(*message)+="\n";
 	}
 	alertRequired(alertNow,v_name,message);
 	//message="";

@@ -39,7 +39,7 @@ int main(){
 	while(n_times_while_loop_runs){ 
 		float value;
 		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-			cin>>value
+			cin>>value;
 			allVitals[loopCounter].setValue(value);
 		}
 		cout<<vitalsAreNormal();

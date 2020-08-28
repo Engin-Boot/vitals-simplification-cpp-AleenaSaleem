@@ -17,4 +17,4 @@ jobs:
       run: g++ -Wall -Wextra -o testchecker *.cpp
       
     - name: run
-      run: ./testchecker
+      run: ./testchecker < vitalsInput.txt

@@ -5,6 +5,15 @@ void Initialize(){
 		allVitals[loopCounter].Initialize();
 	}
 }
+
+void updateVitals(){
+	int loopCounter;
+	float value;
+	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
+		cin>>value;
+		allVitals[loopCounter].setValue(value);
+	}
+}
 bool vitalIsNormal(float vitalValue , float lower, float upper){
 	bool retval=true;
 	if(vitalValue <= lower) {
@@ -35,15 +44,11 @@ bool vitalsAreNormal(){
 int main(){
 	int loopCounter = 0;
 	Initialize();
-	int n_times_while_loop_runs = 3;
 	float value;
+	//int n_times_while_loop_runs = 3;
 	// Don't know the terminating condition yet. While loop runs continuously until device shuts down.
 	/*while(n_times_while_loop_runs){ 
-		float value;
-		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-			cin>>value;
-			allVitals[loopCounter].setValue(value);
-		}
+		updateVitals();
 		cout<<vitalsAreNormal()<<endl;
 		
 		n_times_while_loop_runs--;
@@ -51,20 +56,11 @@ int main(){
 	}*/
 	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
 	//How to ? There is no console input. Need to hard code!
-	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-		cin>>value;
-		allVitals[loopCounter].setValue(value);
-	}
+	updateVitals();
 	assert(vitalsAreNormal()==true);
-	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-		cin>>value;
-		allVitals[loopCounter].setValue(value);
-	}
+	updateVitals();
 	assert(vitalsAreNormal()==false);
-	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-		cin>>value;
-		allVitals[loopCounter].setValue(value);
-	}
+	updateVitals();
 	assert(vitalsAreNormal()==false);
 
 	return 0;

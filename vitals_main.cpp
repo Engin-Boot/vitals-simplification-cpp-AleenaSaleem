@@ -37,7 +37,7 @@ int main(){
 	Initialize();
 	char c;
 	//int n_times_while_loop_runs = 5; // Don't know the terminating condition yet. While loop runs continuously until device shuts down.
-	while((c=getchar()!='E'){ 
+	while((c=getchar()!='E')){ 
 		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
 			allVitals[loopCounter].setCurrentValue();
 		}

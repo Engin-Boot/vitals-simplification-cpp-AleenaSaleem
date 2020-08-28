@@ -1,4 +1,5 @@
 #include"VitalsInformation.h"
+
 void Initialize(){
 	int loopCounter = 0;
 	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
@@ -6,7 +7,7 @@ void Initialize(){
 	}
 }
 
-void updateVitalsvalues(){
+void updateVitals(){
 	int loopCounter;
 	float value;
 	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
@@ -14,32 +15,25 @@ void updateVitalsvalues(){
 		allVitals[loopCounter].setValue(value);
 	}
 }
-bool vitalIsNormal(float vitalValue , float lower, float upper){
-	bool retval=true;
-	if(vitalValue <= lower) {
-	cout<<"Very Low with value : "<<vitalValue<<endl;
-    retval= false;
-  }
-  else if(vitalValue >= upper){
-  	cout<<"Very high with value : "<<vitalValue<<endl;
-  	retval = false;
-  }
-  else{
-  	cout<<"Normal with value : "<<vitalValue<<endl;
-  }
-  return retval;
-}
 
-bool vitalsAreNormal(){
+int main(){
 	int loopCounter = 0;
-	bool status = true;
-	for(loopCounter=0;loopCounter<n_vitals;loopCounter++){
-		cout<<allVitals[loopCounter].getName()<<" status -  ";
-		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper());
-		status = status && new_status;
-	}
-	cout<<endl;
-	return status;
+	Initialize();
+	float value;
+	MonitorVitals mv;
+	string name="";
+	string message="";
+	AlertInSMS al;
+	//mv.alertRequired(&al,&name,&message);
+	updateVitals();
+	assert(mv.vitalsAreNormal(&al,&name,&message)==true);
+	updateVitals();
+	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
+	updateVitals();
+	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
+
+
+	return 0;
 }
 
 int main(){

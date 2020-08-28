@@ -24,13 +24,14 @@ int main(){
 	string name="";
 	string message="";
 	AlertInSMS al;
+	AlertInIntercom alIntercom;
 	//mv.alertRequired(&al,&name,&message);
 	updateVitals();
 	assert(mv.vitalsAreNormal(&al,&name,&message)==true);
 	name = "";
 	message = "";
 	updateVitals();
-	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
+	assert(mv.vitalsAreNormal(&alIntercom,&name,&message)==false);
 	name ="";
 	message = "";
 	updateVitals();

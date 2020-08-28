@@ -38,6 +38,7 @@ bool vitalsAreNormal(){
 		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper());
 		status = status && new_status;
 	}
+	cout<<endl;
 	return status;
 }
 

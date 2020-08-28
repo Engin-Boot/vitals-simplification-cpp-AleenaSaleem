@@ -35,13 +35,14 @@ bool vitalsAreNormal(){
 int main(){
 	int loopCounter = 0;
 	Initialize();
-	char c;
 	int n_times_while_loop_runs = 3; // Don't know the terminating condition yet. While loop runs continuously until device shuts down.
 	while(n_times_while_loop_runs){ 
+		float value;
 		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-			allVitals[loopCounter].setValue();
+			cin>>value
+			allVitals[loopCounter].setValue(value);
 		}
-		bool status = vitalsAreNormal();
+		cout<<vitalsAreNormal();
 		
 		n_times_while_loop_runs--;
 		//cout<<endl<<status<<endl;

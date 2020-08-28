@@ -120,7 +120,7 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
 	//cout<<"Very Low with value : "<<vitalValue<<endl;
 	ostringstream ss;
     ss << vitalValue;
-	*message += "Very Low with value : ";
+	*message += " Very Low with value : ";
 	*message += ss.str();
     retval= false;
   }
@@ -128,14 +128,14 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
   	//cout<<"Very high with value : "<<vitalValue<<endl;
   	ostringstream ss;
     ss << vitalValue;
-	*message += "Very high with value : ";
+	*message += " Very high with value : ";
 	*message += ss.str();
   	retval = false;
   }
   else{
   	ostringstream ss;
     ss << vitalValue;
-	*message += "Normal with value : ";
+	*message += " Normal with value : ";
 	*message += ss.str();
   	//cout<<"Normal with value : "<<vitalValue<<endl;
   }
@@ -153,12 +153,12 @@ bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* mess
 	for(loopCounter=0;loopCounter<n_vitals;loopCounter++){
 	//	cout<<allVitals[loopCounter].getName()<<" status -  ";
 		*v_name = allVitals[loopCounter].getName();
+		(*message)+= (*v_name);
 		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
 		status = status && new_status;
-		(*message)="";
-		alertRequired(alertNow,v_name,message);
+		(*message)+="\n";
+		
 	}
-	
-	//message="";
+	alertRequired(alertNow,v_name,message);
 	return status;
 }

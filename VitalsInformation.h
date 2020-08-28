@@ -60,14 +60,11 @@ void Vital::setLower(float lower){
 void Vital::setUpper(float upper){
 	this->upper =  upper;
 }
-void Vital::setCurrentValue(){
-	int loopCounter=0;
+/*void Vital::setCurrentValue(){
 	float value;
-	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
-		cin>>value;
-		allVitals[loopCounter].vitalValue = value;
-	}
-}
+	cin>>value;
+	this->vitalValue = value;
+}*/
 
 string Vital::getName(){
 	return this->vitalName;

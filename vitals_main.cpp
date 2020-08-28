@@ -42,7 +42,7 @@ int main(){
 			cin>>value;
 			allVitals[loopCounter].setValue(value);
 		}
-		cout<<"\nOverall status: "<<vitalsAreNormal()<<endl;
+		cout<<vitalsAreNormal()<<endl;
 		
 		n_times_while_loop_runs--;
 		//cout<<endl<<status<<endl;

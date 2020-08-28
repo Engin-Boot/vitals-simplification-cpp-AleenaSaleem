@@ -35,8 +35,10 @@ bool vitalsAreNormal(){
 int main(){
 	int loopCounter = 0;
 	Initialize();
-	int n_times_while_loop_runs = 3; // Don't know the terminating condition yet. While loop runs continuously until device shuts down.
-	while(n_times_while_loop_runs){ 
+	int n_times_while_loop_runs = 3;
+	float value;
+	// Don't know the terminating condition yet. While loop runs continuously until device shuts down.
+	/*while(n_times_while_loop_runs){ 
 		float value;
 		for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
 			cin>>value;
@@ -46,8 +48,24 @@ int main(){
 		
 		n_times_while_loop_runs--;
 		//cout<<endl<<status<<endl;
-	}
+	}*/
 	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
 	//How to ? There is no console input. Need to hard code!
+	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
+		cin>>value;
+		allVitals[loopCounter].setValue(value);
+	}
+	assert(vitalsAreNormal()==true);
+	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
+		cin>>value;
+		allVitals[loopCounter].setValue(value);
+	}
+	assert(vitalsAreNormal()==false);
+	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
+		cin>>value;
+		allVitals[loopCounter].setValue(value);
+	}
+	assert(vitalsAreNormal()==false);
+
 	return 0;
 }

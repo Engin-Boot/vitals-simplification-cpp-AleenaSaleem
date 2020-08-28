@@ -21,7 +21,7 @@ class Vital{
 		float getLower();
 		float getUpper();
 		void Initialize();
-		void setCurrentValue();
+		//void setCurrentValue();
 };
 
 Vital allVitals[n_vitals];

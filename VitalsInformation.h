@@ -1,9 +1,9 @@
 #include<iostream>
 #include<assert.h>
-
+#include<sstream>
 using namespace std;
 
-const int n_vitals = 3;
+const int n_vitals = 1;
 
 class Vital{
 	
@@ -80,3 +80,87 @@ float Vital::getLower(){
 float Vital::getUpper(){
 	return this->upper;
 }
+//.............................................................
+
+class Alert{
+	public:
+		virtual void sendAlert(const string*, const string*)=0;
+};
+
+class AlertInSMS: public Alert{
+	public:
+		void sendAlert(const string*, const string*);
+};
+class AlertInIntercom: public Alert{
+	public:
+		void sendAlert(const string*,const string*);
+};
+
+void AlertInSMS::sendAlert(const string* name, const string* message){
+	cout<<*name<<" - "<<*message<<endl;
+}
+
+void AlertInIntercom::sendAlert(const string* name, const string* message){
+	cout<<*name<<" - "<<*message<<endl;
+}
+//...................................................................................
+class MonitorVitals{
+	public:
+		Alert* alertNow;
+		bool vitalsAreNormal(Alert*,string*, string*);
+		void alertRequired(Alert*,string*, string*);
+		void sendNow();
+		
+};
+
+
+bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
+	bool retval=true;
+	if(vitalValue <= lower) {
+	//cout<<"Very Low with value : "<<vitalValue<<endl;
+	ostringstream ss;
+    ss << vitalValue;
+	*message = "Very Low with value : ";
+	*message += ss.str();
+    retval= false;
+  }
+  else if(vitalValue >= upper){
+  	//cout<<"Very high with value : "<<vitalValue<<endl;
+  	ostringstream ss;
+    ss << vitalValue;
+	*message = "Very high with value : ";
+	*message += ss.str();
+  	retval = false;
+  }
+  else{
+  	ostringstream ss;
+    ss << vitalValue;
+	*message = "Normal with value : ";
+	*message += ss.str();
+  	//cout<<"Normal with value : "<<vitalValue<<endl;
+  }
+  return retval;
+}
+
+void MonitorVitals::alertRequired(Alert* alertNow,string* name, string* message){	
+	this->alertNow = alertNow;
+	(this->alertNow)->sendAlert(name,message);
+}
+
+bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* message){
+	int loopCounter = 0;
+	bool status = true;
+	for(loopCounter=0;loopCounter<n_vitals;loopCounter++){
+	//	cout<<allVitals[loopCounter].getName()<<" status -  ";
+		*v_name = allVitals[loopCounter].getName();
+		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
+		status = status && new_status;
+	}
+	if(!status){
+		alertRequired(alertNow,v_name,message);
+	}
+	return status;
+}
+
+
+

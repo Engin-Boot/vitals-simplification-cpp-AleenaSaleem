@@ -6,7 +6,7 @@ void Initialize(){
 	}
 }
 
-void updateVitals(){
+void updateVitalsvalues(){
 	int loopCounter;
 	float value;
 	for(loopCounter = 0; loopCounter < n_vitals; loopCounter++){
@@ -57,11 +57,11 @@ int main(){
 	}*/
 	//Add tests for vitalIsOk() and vitalsAreOk() - 3 for each
 	//How to ? There is no console input. Need to hard code!
-	updateVitals();
+	updateVitalsvalues();
 	assert(vitalsAreNormal()==true);
-	updateVitals();
+	updateVitalsvalues();
 	assert(vitalsAreNormal()==false);
-	updateVitals();
+	updateVitalsvalues();
 	assert(vitalsAreNormal()==false);
 
 	return 0;

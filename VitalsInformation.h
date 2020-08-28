@@ -3,7 +3,7 @@
 #include<sstream>
 using namespace std;
 
-const int n_vitals = 1;
+const int n_vitals = 3;
 
 class Vital{
 	

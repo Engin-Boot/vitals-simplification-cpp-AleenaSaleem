@@ -34,7 +34,7 @@ Vital::Vital(){
 Vital::Vital(string name, float lower, float upper){
 	this->vitalName = name;
 	this->lower = lower;
-	this->upper = lower;
+	this->upper = upper;
 }
 
 void Vital::Initialize(){

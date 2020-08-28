@@ -97,11 +97,11 @@ class AlertInIntercom: public Alert{
 };
 
 void AlertInSMS::sendAlert(const string* name, const string* message){
-	cout<<*name<<" - "<<*message<<endl;
+	cout<<*message<<endl;
 }
 
 void AlertInIntercom::sendAlert(const string* name, const string* message){
-	cout<<*name<<" - "<<*message<<endl;
+	cout<<*message<<endl;
 }
 //...................................................................................
 class MonitorVitals{

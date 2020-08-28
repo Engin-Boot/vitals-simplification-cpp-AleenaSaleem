@@ -27,16 +27,14 @@ int main(){
 	//mv.alertRequired(&al,&name,&message);
 	updateVitals();
 	assert(mv.vitalsAreNormal(&al,&name,&message)==true);
-	*name = "";
-	*message = "";
+	name = "";
+	message = "";
 	updateVitals();
 	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
-	*name = "";
-	*message = "";
+	name ="";
+	message = "";
 	updateVitals();
 	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
-	*name = "";
-	*message = "";
 
 
 	return 0;

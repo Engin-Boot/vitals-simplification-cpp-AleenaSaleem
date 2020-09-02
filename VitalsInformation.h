@@ -134,13 +134,13 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
 	*message += ss.str();
   	retval = false;
   }
-  else{
+  /*else{
   	ostringstream ss;
     ss << vitalValue;
 	*message += " Normal with value : ";
 	*message += ss.str();
   	//cout<<"Normal with value : "<<vitalValue<<endl;
-  }
+  }*/
   return retval;
 }
 

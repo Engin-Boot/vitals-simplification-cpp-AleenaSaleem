@@ -17,25 +17,19 @@ void updateVitals(){
 }
 
 int main(){
-	int loopCounter = 0;
 	Initialize();
-	float value;
 	MonitorVitals mv;
-	string name="";
 	string message="";
 	AlertInSMS al;
 	AlertInIntercom alIntercom;
-	//mv.alertRequired(&al,&name,&message);
 	updateVitals();
-	assert(mv.vitalsAreNormal(&al,&name,&message)==true);
-	name = "";
+	assert(mv.vitalsAreNormal(&al,&message)==true);
 	message = "";
 	updateVitals();
-	assert(mv.vitalsAreNormal(&alIntercom,&name,&message)==false);
-	name ="";
+	assert(mv.vitalsAreNormal(&alIntercom,&message)==false);
 	message = "";
 	updateVitals();
-	assert(mv.vitalsAreNormal(&al,&name,&message)==false);
+	assert(mv.vitalsAreNormal(&al,&message)==false);
 
 
 	return 0;

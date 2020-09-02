@@ -149,7 +149,7 @@ bool vitalIsNormal(string name,float vitalValue , float lower, float upper,strin
 void MonitorVitals::alertRequired(bool status,Alert* alertNow, string* message){	
 	if(!status){
 		this->alertNow = alertNow;
-		(this->alertNow)->sendAlert(name,message);
+		(this->alertNow)->sendAlert(message);
 	}
 }
 

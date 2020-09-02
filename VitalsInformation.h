@@ -125,6 +125,7 @@ bool vitalIsNormal(string name,float vitalValue , float lower, float upper,strin
 	*message += name;
 	*message += " Very Low with value : ";
 	*message += ss.str();
+	(*message)+="\n";
     retval= false;
   }
   else if(vitalValue >= upper){
@@ -134,6 +135,7 @@ bool vitalIsNormal(string name,float vitalValue , float lower, float upper,strin
 	  *message += name;
 	*message += " Very high with value : ";
 	*message += ss.str();
+	 (*message)+="\n";
   	retval = false;
   }
   /*else{
@@ -162,7 +164,7 @@ bool MonitorVitals::vitalsAreNormal(Alert* alertNow, string* message){
 		//(*message)+= (*v_name);
 		bool new_status = vitalIsNormal(allVitals[loopCounter].getName(),allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
 		status = status && new_status;
-		(*message)+="\n";
+		
 		
 	}
 	alertRequired(status,alertNow,message);

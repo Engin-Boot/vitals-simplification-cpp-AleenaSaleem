@@ -84,24 +84,24 @@ float Vital::getUpper(){
 
 class Alert{
 	public:
-		virtual void sendAlert(const string*, const string*)=0;
+		virtual void sendAlert( const string*)=0;
 };
 
 class AlertInSMS: public Alert{
 	public:
-		void sendAlert(const string*, const string*);
+		void sendAlert( const string*);
 };
 class AlertInIntercom: public Alert{
 	public:
-		void sendAlert(const string*,const string*);
+		void sendAlert(const string*);
 };
 
-void AlertInSMS::sendAlert(const string* name, const string* message){
+void AlertInSMS::sendAlert( const string* message){
 	cout<<"Alert through SMS"<<endl;
 	cout<<*message<<endl;
 }
 
-void AlertInIntercom::sendAlert(const string* name, const string* message){
+void AlertInIntercom::sendAlert( const string* message){
 	cout<<"Alert through intercom"<<endl;
 	cout<<*message<<endl;
 }
@@ -109,19 +109,20 @@ void AlertInIntercom::sendAlert(const string* name, const string* message){
 class MonitorVitals{
 	public:
 		Alert* alertNow;
-		bool vitalsAreNormal(Alert*,string*, string*);
-		void alertRequired(bool,Alert*,string*, string*);
+		bool vitalsAreNormal(Alert*, string*);
+		void alertRequired(bool,Alert*, string*);
 		void sendNow();
 		
 };
 
 
-bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
+bool vitalIsNormal(string name,float vitalValue , float lower, float upper,string* message){
 	bool retval=true;
 	if(vitalValue <= lower) {
 	//cout<<"Very Low with value : "<<vitalValue<<endl;
 	ostringstream ss;
     ss << vitalValue;
+	*message += name;
 	*message += " Very Low with value : ";
 	*message += ss.str();
     retval= false;
@@ -130,6 +131,7 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
   	//cout<<"Very high with value : "<<vitalValue<<endl;
   	ostringstream ss;
     ss << vitalValue;
+	  *message += name;
 	*message += " Very high with value : ";
 	*message += ss.str();
   	retval = false;
@@ -144,25 +146,25 @@ bool vitalIsNormal(float vitalValue , float lower, float upper,string* message){
   return retval;
 }
 
-void MonitorVitals::alertRequired(bool status,Alert* alertNow,string* name, string* message){	
+void MonitorVitals::alertRequired(bool status,Alert* alertNow, string* message){	
 	if(!status){
 		this->alertNow = alertNow;
 		(this->alertNow)->sendAlert(name,message);
 	}
 }
 
-bool MonitorVitals::vitalsAreNormal(Alert* alertNow,string* v_name, string* message){
+bool MonitorVitals::vitalsAreNormal(Alert* alertNow, string* message){
 	int loopCounter = 0;
 	bool status = true;
 	for(loopCounter=0;loopCounter<n_vitals;loopCounter++){
 	//	cout<<allVitals[loopCounter].getName()<<" status -  ";
-		*v_name = allVitals[loopCounter].getName();
-		(*message)+= (*v_name);
-		bool new_status = vitalIsNormal(allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
+		//*v_name = allVitals[loopCounter].getName();
+		//(*message)+= (*v_name);
+		bool new_status = vitalIsNormal(allVitals[loopCounter].getName(),allVitals[loopCounter].getValue() , allVitals[loopCounter].getLower() , allVitals[loopCounter].getUpper(),message);
 		status = status && new_status;
 		(*message)+="\n";
 		
 	}
-	alertRequired(status,alertNow,v_name,message);
+	alertRequired(status,alertNow,message);
 	return status;
 }
